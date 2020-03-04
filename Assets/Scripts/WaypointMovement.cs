@@ -4,18 +4,17 @@ public class WaypointMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 1;
     [SerializeField] private Transform[] _points;
-
     private int _currentPoint;
     private bool _facingRight = true;
     private Animator _animator;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _animator.SetBool("isPatrol", true);
-
     }
 
-    void Update()
+    private void Update()
     {
         Transform target = _points[_currentPoint];
         transform.position = Vector2.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
@@ -34,11 +33,9 @@ public class WaypointMovement : MonoBehaviour
         }
     }
 
-    // разворот в противоположную сторону
-    void Flip()
+    private void Flip()
     {
         _facingRight = !_facingRight;
-        //  transform.Rotate(0, 180, 0);
         Vector2 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
