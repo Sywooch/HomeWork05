@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _jumpForce = 6;
     [SerializeField] private Transform _groundCheck = null;
     [SerializeField] private LayerMask _whatIsGround;
-    protected int _countJamp = 1;
+    protected int _countJump = 1;
     private Rigidbody2D _rigidbody2D;
     private bool _isGrounded;
     private Animator _animator;
@@ -59,13 +59,13 @@ public class Movement : MonoBehaviour
         {
             if (_isGrounded == true)
             {
-                _countJamp = 1;
+                _countJump = 1;
             }
-            if (_countJamp >= 0)
+            if (_countJump >= 0)
             {
                 _animator.SetTrigger("jump");
                 _rigidbody2D.velocity = Vector2.up * _jumpForce;
-                _countJamp--;
+                _countJump--;
             }
         }
     }
